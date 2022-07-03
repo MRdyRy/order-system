@@ -21,4 +21,9 @@ public class Product extends BaseEntity<ProductId> {
     public Money getPrice() {
         return price;
     }
+
+    public void updateConfirmedProduct(Product restaurantProduct) {
+        this.name = restaurantProduct.getName();
+        this.price = restaurantProduct.getPrice();
+    }
 }
