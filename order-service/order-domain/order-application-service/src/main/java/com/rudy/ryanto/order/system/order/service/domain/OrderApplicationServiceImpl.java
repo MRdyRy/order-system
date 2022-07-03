@@ -14,11 +14,11 @@ import org.springframework.validation.annotation.Validated;
 @Service
 class OrderApplicationServiceImpl implements OrderApplicationService {
 
-    private final OrderCommandCreateHandler orderCommandCreateHandler;
+    private final OrderCreateCommandHandler orderCommandCreateHandler;
 
     private final OrderTrackCommandHandler orderTrackCommandHandler;
 
-    OrderApplicationServiceImpl(OrderCommandCreateHandler orderCommandCreateHandler, OrderTrackCommandHandler orderTrackCommandHandler) {
+    OrderApplicationServiceImpl(OrderCreateCommandHandler orderCommandCreateHandler, OrderTrackCommandHandler orderTrackCommandHandler) {
         this.orderCommandCreateHandler = orderCommandCreateHandler;
         this.orderTrackCommandHandler = orderTrackCommandHandler;
     }

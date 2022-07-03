@@ -7,6 +7,8 @@ import com.rudy.ryanto.order.system.domain.valueobject.RestaurantId;
 import com.rudy.ryanto.order.system.order.service.domain.dto.create.CreateOrderCommand;
 import com.rudy.ryanto.order.system.order.service.domain.dto.create.CreateOrderResponse;
 import com.rudy.ryanto.order.system.order.service.domain.dto.create.OrderAddress;
+import com.rudy.ryanto.order.system.order.service.domain.dto.track.TrackOrderQuery;
+import com.rudy.ryanto.order.system.order.service.domain.dto.track.TrackOrderResponse;
 import com.rudy.ryanto.order.system.order.service.domain.entity.Order;
 import com.rudy.ryanto.order.system.order.service.domain.entity.OrderItem;
 import com.rudy.ryanto.order.system.order.service.domain.entity.Product;
@@ -60,5 +62,13 @@ public class OrderDataMapper {
 
     private StreetAddress orderAddressToStreetAddress(OrderAddress address) {
         return new StreetAddress(UUID.randomUUID(), address.getStreet(),address.getPostalCode(),address.getCity());
+    }
+
+    public TrackOrderResponse orderToTrackOrderResponse(Order order){
+        return TrackOrderResponse.builder()
+                .orderStatus(order.getOrderStatus())
+                .orderTrackingID(order.getTrackingId().getValue())
+                .failureMessages(order.getFailureMessage())
+                .build();
     }
 }

@@ -7,11 +7,10 @@ import com.rudy.ryanto.order.system.order.service.domain.mapper.OrderDataMapper;
 import com.rudy.ryanto.order.system.order.service.domain.ports.output.message.publisher.payment.OrderCreatedPaymentRequestMessagePublisher;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
 
 @Slf4j
 @Component
-public class OrderCommandCreateHandler {
+public class OrderCreateCommandHandler {
 
     private final OrderCreateHelper orderCreateHelper;
 
@@ -19,7 +18,7 @@ public class OrderCommandCreateHandler {
 
     private final OrderCreatedPaymentRequestMessagePublisher orderCreatedPaymentRequestMessagePublisher;
 
-    public OrderCommandCreateHandler(OrderCreateHelper orderCreateHelper,
+    public OrderCreateCommandHandler(OrderCreateHelper orderCreateHelper,
                                      OrderDataMapper orderDataMapper,
                                      OrderCreatedPaymentRequestMessagePublisher orderCreatedPaymentRequestMessagePublisher) {
         this.orderCreateHelper = orderCreateHelper;
