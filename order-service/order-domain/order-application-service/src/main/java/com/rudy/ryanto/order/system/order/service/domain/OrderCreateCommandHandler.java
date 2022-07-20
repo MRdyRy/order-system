@@ -1,5 +1,6 @@
 package com.rudy.ryanto.order.system.order.service.domain;
 
+import com.rudy.ryanto.order.system.domain.util.ConstanstUtils;
 import com.rudy.ryanto.order.system.order.service.domain.dto.create.CreateOrderCommand;
 import com.rudy.ryanto.order.system.order.service.domain.dto.create.CreateOrderResponse;
 import com.rudy.ryanto.order.system.order.service.domain.event.OrderCreateEvent;
@@ -31,6 +32,6 @@ public class OrderCreateCommandHandler {
         OrderCreateEvent orderCreateEvent = orderCreateHelper.persistOrder(createOrderCommand);
         log.info("Order is created with id : {}", orderCreateEvent.getOrder().getId().getValue());
         orderCreatedPaymentRequestMessagePublisher.publish(orderCreateEvent);
-        return orderDataMapper.orderToCreateOrderResponse(orderCreateEvent.getOrder(),"order created");
+        return orderDataMapper.orderToCreateOrderResponse(orderCreateEvent.getOrder(), ConstanstUtils.MESSAGE.ORDER_CREATED);
     }
 }
