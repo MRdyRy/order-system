@@ -14,7 +14,6 @@
     <packaging>pom</packaging>
     <modules>
         <module>kafka-producer</module>
-        <module>kafka-producer</module>
         <module>kafka-consumer</module>
         <module>kafka-model</module>
         <module>kafka-config-data</module>
@@ -33,7 +32,7 @@
             <dependency>
                 <groupId>org.springframework.kafka</groupId>
                 <artifactId>spring-kafka</artifactId>
-                <version>${kafka.version}</version>
+                <version>${spring-kafka.version}</version>
             </dependency>
             <dependency>
                 <groupId>io.confluent</groupId>
