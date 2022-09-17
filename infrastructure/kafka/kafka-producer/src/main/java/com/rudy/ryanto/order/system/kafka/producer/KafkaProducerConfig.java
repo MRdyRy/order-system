@@ -29,7 +29,7 @@ public class KafkaProducerConfig <K extends Serializable, V extends SpecificReco
     public Map<String, Object> producerConfig(){
         Map<String,Object> properties = new HashMap<>();
         properties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG,kafkaConfigData.getBootstrapServers());
-        properties.put(kafkaConfigData.getSchemaRegistryUrl(),kafkaConfigData.getSchemaRegistryUrl());
+        properties.put(kafkaConfigData.getSchemaRegistryUrlKey(),kafkaConfigData.getSchemaRegistryUrl());
         properties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG,kafkaProducerConfigData.getKeySerializerClass());
         properties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG,kafkaProducerConfigData.getValueSerializerClass());
         properties.put(ProducerConfig.BATCH_SIZE_CONFIG, kafkaProducerConfigData.getBatchSize() * kafkaProducerConfigData.getBatchSizeBoostFactor());
