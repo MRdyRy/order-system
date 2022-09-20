@@ -21,6 +21,7 @@ public class Order extends AggregrateRoot<OrderId> {
     private OrderStatus orderStatus;
     private List<String> failureMessage;
 
+    public static final String FAILURE_MESSAGE_DELIMITER = ",";
     public void initializeOrder(){
         setId(new OrderId(UUID.randomUUID())); //set random UUID to OrderID
         trackingId = new TrackingId(UUID.randomUUID()); //set random UUID to tracking ID
