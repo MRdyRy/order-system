@@ -16,6 +16,7 @@ public class PayOrderKafkaMessagePublisher implements OrderPaidRestaurantRequest
     private final KafkaProducer<String, RestaurantApprovalRequestAvroModel> kafkaProducer;
     private final OrderServiceConfigData orderServiceConfigData;
     private final OrderKafkaMessageHelper orderKafkaMessageHelper;
+    private final String REQUEST_AVRO_MODEL_NAME = "RestaurantApprovalRequestAvroModel";
 
     public PayOrderKafkaMessagePublisher(OrderMessagingDataMapper orderMessagingDataMapper,
                                          KafkaProducer<String, RestaurantApprovalRequestAvroModel> kafkaProducer,
@@ -37,7 +38,7 @@ public class PayOrderKafkaMessagePublisher implements OrderPaidRestaurantRequest
             kafkaProducer.send(orderServiceConfigData.getRestaurantApprovalRequestTopicName(), orderId, restaurantApprovalRequestAvroModel,
                     orderKafkaMessageHelper.getKafkaCallback(
                             orderServiceConfigData.getRestaurantApprovalRequestTopicName(),restaurantApprovalRequestAvroModel,orderId,
-                            restaurantApprovalRequestAvroModel.getClass().getName()));
+                            REQUEST_AVRO_MODEL_NAME));
             log.info("RestaurantApprovalRequestAvroModel sent to Kafka for order id : {}",restaurantApprovalRequestAvroModel.getOrderId());
         } catch (Exception e) {
             log.error("Error while sending RestaurantApprovalRequestAvroModel message to kafka with order id:{} error:{}", orderId, e.getMessage());
